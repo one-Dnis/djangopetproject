@@ -16,9 +16,10 @@ class RegistrationUser(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        #check for git new merge
-        #check for git new merge
-        #check for git new merge
+        #sssdsdsd
+        #sssdsdsd
+        #sssdsdsd
+        #sssdsdsd
         login(self.request, user)
         return redirect('index')
 
