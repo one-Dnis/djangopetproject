@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% if request.user.is_authenticated %}
+<p>{{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+<p>hello guest | <a href="{% url 'login' %}">Login</a> </p>
+
+
+{% endif %}
+</body>
+</html>

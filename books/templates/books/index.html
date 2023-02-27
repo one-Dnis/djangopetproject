@@ -1,0 +1,31 @@
+{% extends 'books/base.html' %}
+{% load book_tags %}
+
+
+
+{% block title %}Главная страница {% endblock %}
+
+{% block body %}
+{% include 'users/registration-pannel.html' %}
+<h1>Книжная полка</h1>
+{% if user.username == 'admin' %}
+<a href="{% url 'add-book' %}">Добавить книгу</a>
+{% endif %}
+{% books_from_tags as books %}
+
+{% for book in books %}
+    <p><h3>{{ book.title }}</h3>{{ book.author }}</p>
+    {% if book.photo %}
+    <p> <a href="{{ book.get_absolute_url }}"><img src='{{ book.photo.url }}' width="200"></a></p>
+    {% else %}
+    {% load static %}
+    <img src="{% static 'books/images/photos/no_picture_for_book.png' %}">
+    {% endif %}
+    <p>
+        <a href="{{ book.get_absolute_url }}">подробнее</a>
+        {% if book.in_stock > 0 %} (есть в наличии {{book.in_stock}}шт.)
+        {% else %} (нет в наличии)
+        {% endif %}
+    </p>
+{% endfor %}
+{% endblock %}

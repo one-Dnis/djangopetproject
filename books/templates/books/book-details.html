@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+<h1>{{ book.title }}</h1>
+<p>{{ book.slug }}</p>
+<img src="{{ book.photo.url }}" width="400">
+<h3>{{ book.description }}</h3>
+<p><a href="{% url 'add-book-to-basket' book.slug %}">Купить книгу</a></p>
+
+{% if user.username == 'admin' %}
+<p><a href="{% url 'delete-book' book.slug %}">Удалить книгу</a></p>
+<p><a href="{% url 'update-book' book.slug %}">Редактировать книгу</a></p>
+{% endif %}
+</body>
+</html>

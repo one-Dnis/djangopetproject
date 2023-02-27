@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <p>{{ form.non_field_errors }}</p>
+    {% for f in form %}
+    <p>{{ f.label }}: {{ f }}</p>
+    <p>{{ f.errors }}</p>
+    {% endfor%}
+    <button type="submit">Войти</button>
+</form>
+<p><a href="{% url 'registration' %}">Registration</a> </p>
+<p><a href="{% url 'index' %}">Главная страница</a></p>
+</body>
+</html>

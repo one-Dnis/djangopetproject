@@ -1,0 +1,14 @@
+{% extends 'books/base.html' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block body %}
+
+<form method="post"> {% csrf_token %}
+
+   <p>{{ form.as_p }}</p>
+
+    <p><button type="submit">Добавить категорию</button></p>
+
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'books/base.html' %}
+{% load book_tags %}
+
+{% block title %}Новая книга{% endblock %}
+
+{% block body %}
+
+<form method="post" enctype="multipart/form-data"> {% csrf_token %}
+<!--    <p><input type="text" name="{{ title }}">{{ form.title }}</p>-->
+<!--    <p><input type="radio" name="{{ author }}">{{ form.author }}</p>-->
+<!--    <p><input type="text" name="{{ form.description }}"></p>-->
+<!--    <p><input type="radio" name="{{ form.category }}"></p>-->
+<!--    <p><input type="radio" name="{{ form.in_stock }}"></p>-->
+<!--    <p><input type="image" name="{{ form.photo }}"></p>-->
+
+    <!--    <p><input type="text" name="title" placeholder="Название книги"></p>-->
+<!--    <p><input name="author">{{ form.author }} <a href="">нов</a></p>-->
+<!--    <p><input type="text" name="description">{{ form.description }}</p>-->
+
+    <p>{{ form.non_field_errors }}</p>
+    <p>{{ form.title }}</p>
+    <p>{{ form.slug }}</p>
+    <p>{{ form.slug.errors }}</p>
+    <p>{{ form.author }} <a href="{% url 'add-author' %}">добавить автора</a></p>
+    <p>{{ form.description }}</p>
+    <p>{{ form.category }}</p><a href="{% url 'add-category' %}">добавить категорию</a></p>
+    <p>{{ form.in_stock }}</p>
+    <p>{{ form.photo }}</p>
+
+    <p><button type="submit">Добавить</button></p>
+
+</form>
+{% endblock %}
